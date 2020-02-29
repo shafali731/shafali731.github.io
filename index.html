@@ -1,0 +1,55 @@
+<!-- <!DOCTYPE html>
+<html>
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()">Try It</button>
+
+<p id="mapholder"></p>
+
+</body>
+</html> -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.getJSON demo</title>
+  <style>
+  img {
+    height: 100px;
+    float: left;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+
+<div id="images"></div>
+
+<script>
+(function() {
+  var API_yelp = "https://api.yelp.com/v3/businesses/search";
+  var KEY = "TNxtjVmmadVYDtF3Y2zJ8IrdCywK5mao9NQs5JwPOYOVkxIcmuGP6ZyaCiRGK4efoNnkyEUPvz9GMKA5GTX62hrLACjQr-iap65I8MML5tGx8gz5Wv1F5m_qV0tPXnYx";
+  $.getJSON( API_yelp, {
+    // tags: "mount rainier",
+    // tagmode: "any",
+    term: "food",
+    key: KEY,
+    // format: "json"
+  })
+    .done(function( data ) {
+      $.each( data.items, function( i, item ) {
+        $( "<ul>" ).attr( "src", item.media.m ).appendTo( "#images" );
+        if ( i === 3 ) {
+          return false;
+        }
+      });
+    });
+})();
+</script>
+
+</body>
+</html>
