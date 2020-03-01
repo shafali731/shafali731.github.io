@@ -9,10 +9,15 @@
 
     var finalURL = proxy + myUrl;
 
-    // With the get JSON (frequently used) method
-    $.getJSON(finalURL, function( data ) {
-        console.log(data);
-    });
+    $.ajax({
+      url: finalURL,
+      method: "GET",
+      dataType: "json",
+      // this headers section is necessary for CORS-anywhere
+      headers: {
+        "x-requested-with": "xhr"
+      }
+    })
   </script>
 </body>
 </html>
